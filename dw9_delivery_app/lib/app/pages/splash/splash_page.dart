@@ -1,6 +1,7 @@
-import 'package:dw9_delivery_app/app/core/ui/helpers/size_extensions.dart';
-import 'package:dw9_delivery_app/app/core/ui/widgets/delivery_button.dart';
 import 'package:flutter/material.dart';
+
+import '../../core/ui/helpers/size_extensions.dart';
+import '../../../app/core/ui/widgets/delivery_button.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);

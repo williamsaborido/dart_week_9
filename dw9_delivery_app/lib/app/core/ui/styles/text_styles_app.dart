@@ -31,8 +31,10 @@ class TextStylesApp {
       TextStyle(fontFamily: font, fontWeight: FontWeight.w800);
 
   TextStyle get textButtonLabel => textBold.copyWith(fontSize: 14);
+
+  TextStyle get textTitle => textExtraBold.copyWith(fontSize: 28);
 }
 
-extension STextStylesAppExtension on BuildContext {
-  TextStylesApp get appStyle => TextStylesApp.instance;
+extension TextStylesAppExtension on BuildContext {
+  TextStylesApp get textStyle => TextStylesApp.instance;
 }

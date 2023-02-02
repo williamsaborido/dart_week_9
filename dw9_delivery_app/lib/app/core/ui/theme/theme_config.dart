@@ -1,8 +1,8 @@
-import 'package:dw9_delivery_app/app/core/ui/styles/text_styles_app.dart';
 import 'package:flutter/material.dart';
 
 import '../styles/colors_app.dart';
 import '../styles/styles_app.dart';
+import '../../../core/ui/styles/text_styles_app.dart';
 
 class ThemeConfig {
   ThemeConfig._();

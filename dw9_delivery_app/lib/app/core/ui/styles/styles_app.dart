@@ -1,6 +1,7 @@
-import 'package:dw9_delivery_app/app/core/ui/styles/colors_app.dart';
-import 'package:dw9_delivery_app/app/core/ui/styles/text_styles_app.dart';
 import 'package:flutter/material.dart';
+
+import '../../../core/ui/styles/colors_app.dart';
+import '../../../core/ui/styles/text_styles_app.dart';
 
 class StylesApp {
   static StylesApp? _instance;
