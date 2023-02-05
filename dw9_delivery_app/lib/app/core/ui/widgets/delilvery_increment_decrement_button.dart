@@ -7,17 +7,26 @@ class DelilveryIncrementDecrementButton extends StatelessWidget {
   final int ammount;
   final VoidCallback incrementTap;
   final VoidCallback decrementTap;
+  final bool _compact;
 
   const DelilveryIncrementDecrementButton({
-    Key? key,
+    super.key,
     required this.ammount,
     required this.incrementTap,
     required this.decrementTap,
-  }) : super(key: key);
+  }) : _compact = false;
+
+  const DelilveryIncrementDecrementButton.compact({
+    super.key,
+    required this.ammount,
+    required this.incrementTap,
+    required this.decrementTap,
+  }) : _compact = true;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: _compact ? const EdgeInsets.all(5) : null,
       decoration: BoxDecoration(
         border: Border.all(
           color: Colors.grey,
@@ -33,15 +42,17 @@ class DelilveryIncrementDecrementButton extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Text(
                 '-',
-                style: context.textStyle.textMedium
-                    .copyWith(fontSize: 22, color: Colors.grey),
+                style: context.textStyle.textMedium.copyWith(
+                  fontSize: _compact ? 10 : 22,
+                  color: Colors.grey,
+                ),
               ),
             ),
           ),
           Text(
             ammount.toString(),
             style: context.textStyle.textRegular.copyWith(
-              fontSize: 17,
+              fontSize: _compact ? 13 : 17,
               color: context.colors.secondary,
             ),
           ),
@@ -51,8 +62,10 @@ class DelilveryIncrementDecrementButton extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Text(
                 '+',
-                style: context.textStyle.textMedium
-                    .copyWith(fontSize: 22, color: context.colors.secondary),
+                style: context.textStyle.textMedium.copyWith(
+                  fontSize: _compact ? 10 : 22,
+                  color: context.colors.secondary,
+                ),
               ),
             ),
           ),

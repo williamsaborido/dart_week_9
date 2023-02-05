@@ -5,8 +5,9 @@ import './core/ui/theme/theme_config.dart';
 import './pages/home/home_router.dart';
 import './pages/product_detail/product_detail_router.dart';
 import './pages/splash/splash_page.dart';
-import './pages/auth/login_page.dart';
-import './pages/register/register_page.dart';
+import './pages/register/register_router.dart';
+import './pages/auth/login/login_router.dart';
+import './pages/order/order_page.dart';
 
 class Dw9DeliveryApp extends StatelessWidget {
   const Dw9DeliveryApp({Key? key}) : super(key: key);
@@ -22,8 +23,9 @@ class Dw9DeliveryApp extends StatelessWidget {
           '/': (context) => const SplashPage(),
           '/Home': (context) => HomeRouter.page,
           '/ProductDetail': (context) => ProductDetailRouter.page,
-          '/Auth/Login': (context) => const LoginPage(),
-          '/Auth/Register': (context) => const RegisterPage(),
+          '/Auth/Login': (context) => LoginRouter.page,
+          '/Auth/Register': (context) => RegisterRouter.page,
+          '/Order': (context) => const OrderPage(),
         },
       ),
     );

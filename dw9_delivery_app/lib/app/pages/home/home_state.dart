@@ -3,7 +3,7 @@ import 'package:match/match.dart';
 
 import '../../models/product_model.dart';
 import '../../dto/order_product_dto.dart';
-part './home_state.g.dart';
+part 'home_state.g.dart';
 
 @match
 enum HomeStateStatus {

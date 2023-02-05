@@ -16,8 +16,14 @@ class DeliveryShoppingBag extends StatelessWidget {
     final preferences = await SharedPreferences.getInstance();
 
     if (!preferences.containsKey('accessToken')) {
-      final loginResult = navigator.pushNamed('/Auth/Login');
+      final loginResult = await navigator.pushNamed('/Auth/Login');
+
+      if (loginResult == null || loginResult == false) {
+        return;
+      }
     }
+
+    await navigator.pushNamed('/Order', arguments: bag);
   }
 
   @override
