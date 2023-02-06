@@ -40,6 +40,8 @@ class OrderField extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           TextFormField(
+            controller: controller,
+            validator: validator,
             decoration: InputDecoration(
               hintText: hint,
               border: _defaultBorder,

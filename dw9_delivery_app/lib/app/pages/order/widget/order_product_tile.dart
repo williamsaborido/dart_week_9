@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../core/ui/widgets/delilvery_increment_decrement_button.dart';
 import '../../../dto/order_product_dto.dart';
 import '../../../core/ui/styles/text_styles_app.dart';
 import '../../../core/ui/styles/colors_app.dart';
+import '../../../core/extensions/formatter_extension.dart';
+import '../order_controller.dart';
 
 class OrderProductTile extends StatelessWidget {
   final int index;
-  final OrderProductDto product;
+  final OrderProductDto orderProduct;
 
   const OrderProductTile({
     Key? key,
     required this.index,
-    required this.product,
+    required this.orderProduct,
   }) : super(key: key);
 
   @override
@@ -22,7 +25,7 @@ class OrderProductTile extends StatelessWidget {
       child: Row(
         children: [
           Image.network(
-            'https://assets.unileversolutions.com/recipes-v2/106684.jpg?imwidth=800',
+            orderProduct.product.image,
             width: 100,
             height: 100,
             fit: BoxFit.cover,
@@ -34,23 +37,32 @@ class OrderProductTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'X-Burger',
+                    orderProduct.product.name,
                     style: context.textStyle.textRegular.copyWith(fontSize: 16),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        r'R$ 19,90',
+                        (orderProduct.product.price * orderProduct.amount)
+                            .currencyPTBR,
                         style: context.textStyle.textMedium.copyWith(
                           fontSize: 14,
                           color: context.colors.secondary,
                         ),
                       ),
                       DelilveryIncrementDecrementButton.compact(
-                        ammount: 1,
-                        incrementTap: () {},
-                        decrementTap: () {},
+                        ammount: orderProduct.amount,
+                        incrementTap: () {
+                          context
+                              .read<OrderController>()
+                              .incrementProduct(index);
+                        },
+                        decrementTap: () {
+                          context
+                              .read<OrderController>()
+                              .decrementProduct(index);
+                        },
                       ),
                     ],
                   ),

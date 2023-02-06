@@ -22,6 +22,12 @@ class _LoginPageState extends BaseState<LoginPage, LoginController> {
   final _formKey = GlobalKey<FormState>();
 
   @override
+  void onReady() {
+    _emailController.text = 'william@epronto.biz';
+    _passwordController.text = '123456';
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocListener<LoginController, LoginState>(
       listener: (context, state) {
@@ -29,7 +35,7 @@ class _LoginPageState extends BaseState<LoginPage, LoginController> {
           any: () => hideLoader(),
           login: () => showLoader(),
           success: () {
-            showLoader();
+            hideLoader();
             showSuccess('Login efetuado com sucesso');
             Navigator.pop(context, true);
           },
