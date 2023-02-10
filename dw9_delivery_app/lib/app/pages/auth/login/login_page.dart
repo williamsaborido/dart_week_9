@@ -20,6 +20,7 @@ class _LoginPageState extends BaseState<LoginPage, LoginController> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  bool showPassword = false;
 
   @override
   void onReady() {
@@ -80,14 +81,25 @@ class _LoginPageState extends BaseState<LoginPage, LoginController> {
                       const SizedBox(
                         height: 30,
                       ),
-                      TextFormField(
-                        controller: _passwordController,
-                        obscureText: true,
-                        validator: Validatorless.required('Senha obrigatória'),
-                        decoration: const InputDecoration(
-                          labelText: 'Senha',
-                        ),
-                      ),
+                      StatefulBuilder(builder: (context, setState) {
+                        return TextFormField(
+                          controller: _passwordController,
+                          obscureText: !showPassword,
+                          validator:
+                              Validatorless.required('Senha obrigatória'),
+                          decoration: InputDecoration(
+                              labelText: 'Senha',
+                              suffixIcon: IconButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      showPassword = !showPassword;
+                                    });
+                                  },
+                                  icon: Icon(showPassword
+                                      ? Icons.visibility
+                                      : Icons.visibility_off))),
+                        );
+                      }),
                       const SizedBox(
                         height: 50,
                       ),

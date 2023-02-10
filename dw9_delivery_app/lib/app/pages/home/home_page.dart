@@ -34,7 +34,7 @@ class _HomePageState extends BaseState<HomePage, HomeController> {
                 loading: () => showLoader(),
                 error: () {
                   hideLoader();
-                  showError(state.erroMessage ?? 'Erro deesconhecido');
+                  showError(state.erroMessage ?? 'Erro desconhecido');
                 });
           },
           buildWhen: (previous, current) => current.status.matchAny(
